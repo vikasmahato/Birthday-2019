@@ -5,6 +5,7 @@ import SkipButton from "../SkipButton";
 import Greeting from "../Greeting";
 import BackgroundMusic from "../BackgroundMusic";
 import Name from "../Name/Name";
+import Message from "../Message";
 
 
 class Home extends Component {
@@ -43,6 +44,23 @@ class Home extends Component {
     }
 
     render() {
+
+        const isPlaying = this.state.isPlaying;
+
+        let message;
+
+        if(isPlaying) {
+            message = <Grid container justify = "center" style={
+                {position: 'absolute',
+                    bottom : 50,
+                    zIndex: 2,
+                    width: '100%',
+                    height: 150}
+            }>
+                <Message/>
+            </Grid>
+        }
+
         return (
             <div>
                 <BackgroundMusic isPlaying={this.state.isPlaying}/>
@@ -75,6 +93,8 @@ class Home extends Component {
                     <Greeting isPlaying={this.state.isPlaying}/>
                     <Name isPlaying={this.state.isPlaying}/>
                 </Grid>
+
+                {message}
             </div>
         );
     }
