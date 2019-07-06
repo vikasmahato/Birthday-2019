@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import Grid from "@material-ui/core/Grid";
 import PlayButton from "../PlayButton";
 import SkipButton from "../SkipButton";
+import CreateButton from "../CreateButton";
 import Greeting from "../Greeting";
 import BackgroundMusic from "../BackgroundMusic";
 import Name from "../Name/Name";
 import Message from "../Message";
-import MoreMessages from "../MoreMessages";
+import MessageModal from "../MoreMessages/MessageModal";
 
 
 class Home extends Component {
@@ -48,11 +49,11 @@ class Home extends Component {
     }
 
     showFriendsMessages() {
+
         this.setState({
             friendsMessages: true
         });
 
-        console.log("friends messages");
     }
 
     backFriendsMessages() {
@@ -84,10 +85,11 @@ class Home extends Component {
             </Grid>
         }
 
-        if(!friendsMessages) {
         return (
             <div>
                 <BackgroundMusic isPlaying={this.state.isPlaying}/>
+                {friendsMessages ? (<MessageModal backFriendsMessages = {this.backFriendsMessages}/>): null}
+
                 <Grid container
                       spacing={0}
                       direction="column"
@@ -105,6 +107,7 @@ class Home extends Component {
                         handleClickSkip={this.handleClickSkip}
                     />
                 </Grid>
+                <CreateButton/>
                 <Grid container justify="center" style={
                     {
                         position: 'absolute',
@@ -123,16 +126,6 @@ class Home extends Component {
                 {message}
             </div>
         );
-    }
-
-        if(friendsMessages) {
-            return (
-                <div>
-                    <BackgroundMusic isPlaying={this.state.isPlaying}/>
-                    <MoreMessages backFriendsMessages={this.backFriendsMessages}/>
-                </div>
-            );
-        }
     }
 }
 

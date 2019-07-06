@@ -16,7 +16,7 @@ class Message extends Component {
              'Today is...',
              'Today is...',
              'as beautiful as other days',
-        /*     'but you realize',
+             'but you realize',
              'another year has gone',
              'in a blink of the eyes',
              'however',
@@ -61,7 +61,7 @@ class Message extends Component {
              'and make it the best memory..',
              'lastly...',
              'I\'d like to wish you one more time',
-             'a very happy birthday'*/
+             'a very happy birthday'
         ];
 
          this.handleClickReplay = this.handleClickReplay.bind(this);
@@ -92,7 +92,7 @@ class Message extends Component {
             setTimeout( function timer(){
                 let showRow = this.state.showRow + 1;
                 this.setState({showRow: showRow});
-            }.bind(this), i*500 );
+            }.bind(this), i*2000 );
         }
     }
 
@@ -127,7 +127,7 @@ class Message extends Component {
                     ) : (
                         <div>
                             <ReplayButton handleClickReplay = {this.handleClickReplay}/>
-                            <MoreMessages handleClickMore = {this.props.showFriendsMessages()}/>
+                            <MoreMessages handleClickMore = {this.props.showFriendsMessages}/>
                         </div>
                     )}
                 </Typography>
